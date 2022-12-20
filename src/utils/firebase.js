@@ -3,13 +3,40 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCoCe7qt-tnI7eHehggYdP89i8-_xiHr_g",
-  authDomain: "clothing-db-bafe2.firebaseapp.com",
-  projectId: "clothing-db-bafe2",
-  storageBucket: "clothing-db-bafe2.appspot.com",
-  messagingSenderId: "1080686520932",
-  appId: "1:1080686520932:web:6f28dbb151d5764b818d71",
+  apiKey: "AIzaSyAA5nYK1pNh7XjQEW-BWt7aUECtwW6TgbI",
+  authDomain: "cloud-db2.firebaseapp.com",
+  projectId: "cloud-db2",
+  storageBucket: "cloud-db2.appspot.com",
+  messagingSenderId: "695911286622",
+  appId: "1:695911286622:web:6a4c3627085d130af0f1cf"
 };
+
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if(!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+  // console.log(snapShot);
+
+  if(!snapShot.exists){
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData
+  
+      })
+    } catch (error) {
+      console.log('error creating user', error.message);
+    }
+  }
+
+  return userRef;
+}
 
 firebase.initializeApp(firebaseConfig);
 

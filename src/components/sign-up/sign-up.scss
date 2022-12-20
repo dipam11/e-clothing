@@ -1,20 +1,15 @@
-.sign-in{
-    width: 380px;
-    margin: auto;
+.sign-up{
     display: flex;
     flex-direction: column;
+    margin: auto;
+    width: 380px;
     box-shadow: 0 0 20px 8px #d0d0d0;
     padding: 1.5em;
     border-radius: 5px;
-    margin-right: 1em;
-    
+    margin-left: 1em;
+
 
     .title{
         margin: 5px 0;
-    }
-
-    .buttons{
-        display: flex;
-        justify-content: space-between;
     }
 }

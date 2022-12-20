@@ -1,0 +1,13 @@
+.sign-in-and-sing-up{
+    width: fit-content;
+    display: flex;
+    // flex-direction: column;
+    margin: 10px auto;
+
+    .switch{
+        width: 380px;
+        margin: 20px auto 5px;
+        cursor: pointer;
+    }
+
+}
