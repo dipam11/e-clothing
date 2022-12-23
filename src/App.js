@@ -14,7 +14,6 @@ import { selectCurrentUser } from "./redux/user/selector";
 import Checkout from "./pages/checkout/checkout";
 
 const App = (props) => {
-  // const [currentUser, setCurrentUser] = useState(null);
   const { setCurrentUser } = props;
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
@@ -30,7 +29,7 @@ const App = (props) => {
       } else {
         setCurrentUser(userAuth);
       }
-    });
+    }, []);
   });
   return (
     <div>
